@@ -3,21 +3,41 @@ import {
   Text,
   Banner,
   reactExtension,
+  useSettings,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension('purchase.checkout.block.render', () => <Extension />);
 
 function Extension() {
+  const settings = useSettings();
   const cartLines = useCartLines();
 
-  const productId = '7079695384657';
-  const productInCart = cartLines.some(line => line.merchandise.id === productId);
+  const productId = settings.product_id;
+  const bannerMessage = settings.banner_message;
+  const bannerInfo = settings.banner_message_info;
 
-  return (
-    <Banner status={productInCart ? 'success' : 'critical'}>
-      <Text>
-        {productInCart ? 'Your selected product is in the cart!' : 'Your selected product is not in your cart.'}
-      </Text>
-    </Banner>
+  const productInCart = cartLines.some(line => line.merchandise.product.id === 'gid://shopify/Product/' + productId);
+
+  if (productInCart) {
+    console.log('Product is in cart');
+  }
+
+  return (<>
+    {productInCart ? (
+      <Banner status='success'>
+        <Text>
+          {bannerMessage}
+        </Text>
+      </Banner>
+    ) : null}
+
+    {bannerInfo ? (
+      <Banner status='info'>
+        <Text>
+          {bannerInfo}
+        </Text>
+      </Banner>
+    ) : null}
+  </>
   );
 }

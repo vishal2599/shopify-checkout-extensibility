@@ -37,7 +37,19 @@ key = "description"
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
 [extensions.settings]
 [[extensions.settings.fields]]
-key = "banner_title"
+key = "product_id"
 type = "single_line_text_field"
-name = "Banner title"
-description = "Enter a title for the banner"
+name = "Product ID"
+description = "Enter the product ID for which the banner must display"
+
+[[extensions.settings.fields]]
+key = "banner_message"
+type = "multi_line_text_field"
+name = "Banner Message"
+description = "Enter a custom message for the banner"
+
+[[extensions.settings.fields]]
+key = "banner_message_info"
+type = "multi_line_text_field"
+name = "Banner Info"
+description = "Enter a custom message for the banner info"
