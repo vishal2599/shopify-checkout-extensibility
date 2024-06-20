@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "1223ff51834b5c2ac8a2b78a76f20107"
-name = "Test Block"
-handle = "test-block"
+name = "Checkout Customizer"
+handle = "vs-checkout-customizer"
 application_url = "https://example.com/"
 embedded = true
 
